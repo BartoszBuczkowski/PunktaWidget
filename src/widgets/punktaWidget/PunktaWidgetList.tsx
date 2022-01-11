@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { colors, FormField, formFields } from "./PunktaWidget.data";
 import useCarsForm from "./hooks/useCarsForm";
 import { AutocompleteValues } from "./PunktaWidget.types";
-import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
+import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import useStyles from "./hooks/useStyles";
 
 const orderFields: FormField["id"][] = ["brands", "models", "fuels"];
