@@ -1,16 +1,15 @@
 import { useMemo, useState } from "react";
-import { colors, FormField, formFields } from "./PunktaWidget.data";
+import {
+  colors,
+  FormField,
+  formFields,
+  initialFields,
+  orderFields,
+} from "./PunktaWidget.data";
 import useCarsForm from "./hooks/useCarsForm";
 import { AutocompleteValues } from "./PunktaWidget.types";
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import useStyles from "./hooks/useStyles";
-
-const orderFields: FormField["id"][] = ["brands", "models", "fuels"];
-const initialFields: Record<FormField["id"], AutocompleteValues | null> = {
-  brands: null,
-  fuels: null,
-  models: null,
-};
 
 function PunktaWidgetList() {
   const classes = useStyles();
