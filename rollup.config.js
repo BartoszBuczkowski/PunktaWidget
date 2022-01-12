@@ -9,7 +9,7 @@ const packageJson = require("./package.json");
 
 const config = [
   {
-    input: "src/index.ts",
+    input: "src/build.ts",
     output: [
       {
         file: packageJson.main,
