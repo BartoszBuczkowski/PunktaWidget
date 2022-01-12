@@ -1,3 +1,5 @@
+import { searchAttributes } from "./PunktaWidget.data";
+
 export interface FormField {
   id: "brands" | "models" | "fuels";
   label: string;
@@ -26,13 +28,19 @@ export interface AutocompleteValues {
   id: string;
 }
 
-export type InitialFields = Record<FormField["id"], AutocompleteValues | null>;
+export type CarDataFields = Record<FormField["id"], AutocompleteValues | null>;
 
 export interface PunktaWidgetListProps {
-  fieldsValues: InitialFields;
-  setFieldsValues: (value: InitialFields) => void;
+  fieldsValues: CarDataFields;
+  setFieldsValues: (value: CarDataFields) => void;
 }
 
 export interface PunktaWidgetProps {
   widgetInstanceId: string;
 }
+
+export interface PunktaWidgetSubmitProps {
+  fieldsValues: CarDataFields;
+}
+
+export type SearchAttributesKeys = keyof typeof searchAttributes;

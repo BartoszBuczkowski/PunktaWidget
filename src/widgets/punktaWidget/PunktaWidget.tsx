@@ -1,5 +1,4 @@
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useLocalStorage from "./hooks/useLocalStorage";
 import useStyles from "./hooks/useStyles";
@@ -7,6 +6,7 @@ import { initialFields } from "./PunktaWidget.data";
 import { PunktaWidgetProps } from "./PunktaWidget.types";
 import PunktaWidgetHeader from "./PunktaWidgetHeader";
 import PunktaWidgetList from "./PunktaWidgetList";
+import PunktaWidgetSubmit from "./PunktaWidgetSubmit";
 
 const theme = createTheme();
 
@@ -30,16 +30,7 @@ function PunktaWidget({ widgetInstanceId }: PunktaWidgetProps) {
           />
         </Box>
 
-        <Box className={classes.buttonContainer}>
-          <Button
-            fullWidth
-            variant="contained"
-            className={classes.submitButton}
-            endIcon={<ArrowForwardIcon />}
-          >
-            Oblicz składkę
-          </Button>
-        </Box>
+        <PunktaWidgetSubmit fieldsValues={storedValue} />
       </Box>
     </ThemeProvider>
   );

@@ -1,4 +1,4 @@
-import type { FormField, InitialFields } from "./PunktaWidget.types";
+import type { CarDataFields, FormField } from "./PunktaWidget.types";
 
 export const formFields: FormField[] = [
   { id: "brands", label: "Marka" },
@@ -29,10 +29,19 @@ export const requestOptions = {
 };
 
 export const apiCarsBaseRoute = "https://api-dev.mfind.pl/cars";
+export const targetPath =
+  "https://punkta.pl/ubezpieczenie-oc-ac/kalkulator-oc-ac";
 
 export const orderFields: FormField["id"][] = ["brands", "models", "fuels"];
-export const initialFields: InitialFields = {
+
+export const initialFields: CarDataFields = {
   brands: null,
   fuels: null,
   models: null,
+};
+
+export const searchAttributes = {
+  brands: "make_name",
+  models: "model_name",
+  fuels: "fuel_name",
 };

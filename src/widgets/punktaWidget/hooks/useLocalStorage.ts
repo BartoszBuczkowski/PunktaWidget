@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { InitialFields } from "../PunktaWidget.types";
+import { CarDataFields } from "../PunktaWidget.types";
 
-function useLocalStorage(key: string, initialValue: InitialFields) {
+function useLocalStorage(key: string, initialValue: CarDataFields) {
   const storageName = `Punkta_${key}`;
 
-  const [storedValue, setStoredValue] = useState<InitialFields>(() => {
+  const [storedValue, setStoredValue] = useState<CarDataFields>(() => {
     try {
       const item = window.localStorage.getItem(storageName);
       return item ? JSON.parse(item) : initialValue;
@@ -14,7 +14,7 @@ function useLocalStorage(key: string, initialValue: InitialFields) {
     }
   });
 
-  const setValue = (value: InitialFields) => {
+  const setValue = (value: CarDataFields) => {
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
