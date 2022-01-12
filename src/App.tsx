@@ -1,4 +1,4 @@
-import PunktaWidget from "./widgets/punktaWidget/PunktaWidget";
+import PunktaWidget from "./punktaWidget/PunktaWidget";
 
 function App() {
   return (
