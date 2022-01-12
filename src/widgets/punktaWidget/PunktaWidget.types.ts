@@ -1,3 +1,7 @@
+export interface FormField {
+  id: "brands" | "models" | "fuels";
+  label: string;
+}
 export interface Brand {
   make_code: string;
   make_name: string;
@@ -21,3 +25,11 @@ export interface AutocompleteValues {
   label: string;
   id: string;
 }
+
+export type InitialFields = Record<FormField["id"], AutocompleteValues | null>;
+
+export interface PunktaWidgetListProps {
+  widgetInstanceId: string;
+}
+
+export interface PunktaWidgetProps extends PunktaWidgetListProps {}

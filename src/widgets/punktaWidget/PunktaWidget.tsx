@@ -4,10 +4,11 @@ import PunktaWidgetHeader from "./PunktaWidgetHeader";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import useStyles from "./hooks/useStyles";
 import PunktaWidgetList from "./PunktaWidgetList";
+import type { PunktaWidgetListProps } from "./PunktaWidget.types";
 
 const theme = createTheme();
 
-function PunktaWidget() {
+function PunktaWidget({ widgetInstanceId }: PunktaWidgetListProps) {
   const classes = useStyles();
 
   return (
@@ -16,7 +17,7 @@ function PunktaWidget() {
         <PunktaWidgetHeader />
 
         <Box className={classes.listContainer}>
-          <PunktaWidgetList />
+          <PunktaWidgetList widgetInstanceId={widgetInstanceId} />
         </Box>
 
         <Box className={classes.buttonContainer}>

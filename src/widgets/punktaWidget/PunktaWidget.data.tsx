@@ -1,9 +1,4 @@
-import { AutocompleteValues } from "./PunktaWidget.types";
-
-export interface FormField {
-  id: "brands" | "models" | "fuels";
-  label: string;
-}
+import type { FormField, InitialFields } from "./PunktaWidget.types";
 
 export const formFields: FormField[] = [
   { id: "brands", label: "Marka" },
@@ -36,9 +31,8 @@ export const requestOptions = {
 export const apiCarsBaseRoute = "https://api-dev.mfind.pl/cars";
 
 export const orderFields: FormField["id"][] = ["brands", "models", "fuels"];
-export const initialFields: Record<FormField["id"], AutocompleteValues | null> =
-  {
-    brands: null,
-    fuels: null,
-    models: null,
-  };
+export const initialFields: InitialFields = {
+  brands: null,
+  fuels: null,
+  models: null,
+};

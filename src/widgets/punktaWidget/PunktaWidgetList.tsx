@@ -1,19 +1,27 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   colors,
-  FormField,
   formFields,
   initialFields,
   orderFields,
 } from "./PunktaWidget.data";
 import useCarsForm from "./hooks/useCarsForm";
-import { AutocompleteValues } from "./PunktaWidget.types";
+import type {
+  AutocompleteValues,
+  FormField,
+  PunktaWidgetListProps,
+} from "./PunktaWidget.types";
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import useStyles from "./hooks/useStyles";
+import useLocalStorage from "./hooks/useLocalStorage";
 
-function PunktaWidgetList() {
+function PunktaWidgetList({ widgetInstanceId }: PunktaWidgetListProps) {
   const classes = useStyles();
-  const [fieldsValues, setFieldsValues] = useState(initialFields);
+
+  const [fieldsValues, setFieldsValues] = useLocalStorage(
+    widgetInstanceId,
+    initialFields
+  );
 
   const { brands, fuels, models, loadingFields } = useCarsForm({
     currentBrand: fieldsValues.brands,

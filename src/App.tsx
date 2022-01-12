@@ -10,7 +10,7 @@ function App() {
         paddingTop: "5%",
       }}
     >
-      <PunktaWidget />
+      <PunktaWidget widgetInstanceId="1" />
     </div>
   );
 }
