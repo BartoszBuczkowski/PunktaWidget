@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { AutocompleteValues, InitialFields } from "../PunktaWidget.types";
+import { InitialFields } from "../PunktaWidget.types";
 
 function useLocalStorage(key: string, initialValue: InitialFields) {
   const storageName = `Punkta_${key}`;
 
-  const [storedValue, setStoredValue] = useState(() => {
+  const [storedValue, setStoredValue] = useState<InitialFields>(() => {
     try {
       const item = window.localStorage.getItem(storageName);
       return item ? JSON.parse(item) : initialValue;
@@ -14,7 +14,7 @@ function useLocalStorage(key: string, initialValue: InitialFields) {
     }
   });
 
-  const setValue = (value: AutocompleteValues | null) => {
+  const setValue = (value: InitialFields) => {
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
@@ -24,7 +24,7 @@ function useLocalStorage(key: string, initialValue: InitialFields) {
       console.error(error);
     }
   };
-  return [storedValue, setValue];
+  return { storedValue, setValue };
 }
 
 export default useLocalStorage;

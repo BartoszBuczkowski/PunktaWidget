@@ -29,7 +29,10 @@ export interface AutocompleteValues {
 export type InitialFields = Record<FormField["id"], AutocompleteValues | null>;
 
 export interface PunktaWidgetListProps {
-  widgetInstanceId: string;
+  fieldsValues: InitialFields;
+  setFieldsValues: (value: InitialFields) => void;
 }
 
-export interface PunktaWidgetProps extends PunktaWidgetListProps {}
+export interface PunktaWidgetProps {
+  widgetInstanceId: string;
+}

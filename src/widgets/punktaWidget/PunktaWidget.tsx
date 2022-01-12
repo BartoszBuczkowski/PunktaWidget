@@ -1,14 +1,21 @@
-import { Box, Button } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import PunktaWidgetHeader from "./PunktaWidgetHeader";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import useLocalStorage from "./hooks/useLocalStorage";
 import useStyles from "./hooks/useStyles";
+import { initialFields } from "./PunktaWidget.data";
+import { PunktaWidgetProps } from "./PunktaWidget.types";
+import PunktaWidgetHeader from "./PunktaWidgetHeader";
 import PunktaWidgetList from "./PunktaWidgetList";
-import type { PunktaWidgetListProps } from "./PunktaWidget.types";
 
 const theme = createTheme();
 
-function PunktaWidget({ widgetInstanceId }: PunktaWidgetListProps) {
+function PunktaWidget({ widgetInstanceId }: PunktaWidgetProps) {
+  const { storedValue, setValue } = useLocalStorage(
+    widgetInstanceId,
+    initialFields
+  );
+
   const classes = useStyles();
 
   return (
@@ -17,7 +24,10 @@ function PunktaWidget({ widgetInstanceId }: PunktaWidgetListProps) {
         <PunktaWidgetHeader />
 
         <Box className={classes.listContainer}>
-          <PunktaWidgetList widgetInstanceId={widgetInstanceId} />
+          <PunktaWidgetList
+            fieldsValues={storedValue}
+            setFieldsValues={setValue}
+          />
         </Box>
 
         <Box className={classes.buttonContainer}>

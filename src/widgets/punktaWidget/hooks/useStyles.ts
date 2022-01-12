@@ -1,4 +1,4 @@
-import { makeStyles, createStyles } from "@mui/styles";
+import { createStyles, makeStyles } from "@mui/styles";
 import { colors } from "../PunktaWidget.data";
 
 const useStyles = makeStyles(() =>

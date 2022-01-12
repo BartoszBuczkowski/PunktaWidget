@@ -1,27 +1,19 @@
+import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import { useMemo } from "react";
-import {
-  colors,
-  formFields,
-  initialFields,
-  orderFields,
-} from "./PunktaWidget.data";
 import useCarsForm from "./hooks/useCarsForm";
+import useStyles from "./hooks/useStyles";
+import { colors, formFields, orderFields } from "./PunktaWidget.data";
 import type {
   AutocompleteValues,
   FormField,
   PunktaWidgetListProps,
 } from "./PunktaWidget.types";
-import { Autocomplete, CircularProgress, TextField } from "@mui/material";
-import useStyles from "./hooks/useStyles";
-import useLocalStorage from "./hooks/useLocalStorage";
 
-function PunktaWidgetList({ widgetInstanceId }: PunktaWidgetListProps) {
+function PunktaWidgetList({
+  fieldsValues,
+  setFieldsValues,
+}: PunktaWidgetListProps) {
   const classes = useStyles();
-
-  const [fieldsValues, setFieldsValues] = useLocalStorage(
-    widgetInstanceId,
-    initialFields
-  );
 
   const { brands, fuels, models, loadingFields } = useCarsForm({
     currentBrand: fieldsValues.brands,
@@ -58,7 +50,7 @@ function PunktaWidgetList({ widgetInstanceId }: PunktaWidgetListProps) {
 
       fieldsToClear.forEach((fieldName) => (newFieldsValues[fieldName] = null));
     }
-    console.log(newFieldsValues);
+
     newFieldsValues[id] = values;
     setFieldsValues({ ...newFieldsValues });
   };
